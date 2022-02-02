@@ -110,9 +110,7 @@ async def play(c: Client, m: Message):
         except UserAlreadyParticipant:
             pass
         except Exception as e:
-            return await m.reply_text(
-                (""
-            )
+            return await m.reply_text("")
     if replied:
         if replied.audio or replied.voice:
             suhu = await replied.reply("جاري التحميل انتظر قليلأ .....⚡♥️")
