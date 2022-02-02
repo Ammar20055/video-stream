@@ -5,7 +5,7 @@
 
 # pyrogram stuff
 from pyrogram import Client
-from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
+from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant, InlineKeyboardButton
 from pyrogram.types import InlineKeyboardMarkup, Message
 # pytgcalls stuff
 from pytgcalls import StreamType
@@ -45,6 +45,22 @@ async def ytdl(link: str):
     if stdout:
         return 1, stdout
     return 0, stderr
+
+Keyboard = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton("Pause ⏸", callback_data="cbpause"),
+            InlineKeyboardButton("Resume ▶️", callback_data="cbresume")
+        ],
+        [
+            InlineKeyboardButton("Skip ⏩", callback_data="cbskip"),
+            InlineKeyboardButton("End ⏹", callback_data="cbend")
+        ],
+        [
+            InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", callback_data="ahmedelnqyb")
+        ]
+    ]
+)
 
 
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}", "شغل", "تشغيل"]) & other_filters)
