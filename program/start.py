@@ -70,9 +70,9 @@ async def start_(client: Client, message: Message):
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("❓ Basic Guide", callback_data="english")],
                 [
-                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
+                    InlineKeyboardButton("📚 Commands", callback_data="arbic"),
                     InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
@@ -176,35 +176,18 @@ async def new_chat(c: Client, m: Message):
 async def startt_(client: Client, message: Message):
     await message.reply_photo(
         photo="https://telegra.ph/file/d5c95c229929d3004b900.jpg",
-        caption=f"<b><i>Hello there!! \nI'm a Telegram voice chat music player by @ahmedelnqyb. Enjoy my advanced features along with a simple and sexy interface</b></i>",
+        caption=f"...........................",
         reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶",
-                        url=f"https://t.me/ahmedelnqyb",
-                    )
-                ],
-                [
-                    InlineKeyboardButton("Guide 📜", callback_data="arbic"),
-                    InlineKeyboardButton("Commands ", callback_data="english"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "Channel 🍀", url=f"https://t.me/elnqyb"
-                    ),
-                    InlineKeyboardButton(
-                        "group ☕", url="https://t.me/ahmedelnqyb"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "support ", url=f"https://t.me/elnqybsp"
-                    )
-                ]
-           ]
-        ),
-    )
+                    [
+                        [
+                            InlineKeyboardButton("اللغة العربية 🇪🇬", callback_data="arbic")
+                        ],
+                        [
+                            InlineKeyboardButton("English language 🇺🇲", callback_data="english")
+                        ]
+                    ]
+                )
+            )
 
 chat_watcher_group = 5
 
