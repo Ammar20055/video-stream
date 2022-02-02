@@ -5,7 +5,7 @@
 
 # pyrogram stuff
 from pyrogram import Client
-from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant, InlineKeyboardButton
+from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, Message
 # pytgcalls stuff
 from pytgcalls import StreamType
