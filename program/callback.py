@@ -24,7 +24,7 @@ async def arbic(_, query: CallbackQuery):
         f"""مرحباً بك \n
 ⌁ ⁞  بوت تشغيل الأغاني والفيديو  في المكالمه ' المرئية
  البوت قيد التشغيل الان ...... ⚡♥️
-⌁ ⁞ my developer [!! 𝒂𝒉𝒎𝒆𝒅 𝒆𝒍𝒏𝒒𝒚𝒃 𖤐](https://t.me/ahmedelnqyb)
+⌁ ⁞ my developer [𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶](https://t.me/ahmedelnqyb)
 ⌁ ⁞  قم بإضافة البوت اللي مجموعتك واستمع إلى الموسيقى ومشاهدة الفيديوهات ♥️""",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -58,7 +58,7 @@ async def arbic(_, query: CallbackQuery):
     )
 
 Client.on_callback_query(filters.regex("english"))
-async def english (_, query: CallbackQuery):
+async def english(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
         f"A Telegram Music Bot Based Mongodb \n Add Me To Ur Chat For and Help and And Support Click On Buttons \n 💞  These Features AI Based \nPowered By [𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶](https://t.me/ahmedelnqyb) """,
