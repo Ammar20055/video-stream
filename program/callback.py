@@ -191,7 +191,7 @@ async def cbmenu(_, query: CallbackQuery):
     chat = query.message.chat.title
     if chat_id in QUEUE:
           await query.edit_message_text(
-              f"⚙️ **Settings of** {chat}\n\n⏸ : pause stream\n▶️ : resume stream\n🔇 : mute userbot\n🔊 : unmute userbot\n⏹ : stop stream",
+              f"",
               reply_markup=InlineKeyboardMarkup(buttons),
           )
     else:
