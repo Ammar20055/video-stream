@@ -35,6 +35,7 @@ def menu_markup(user_id):
             InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", callback_data="ahmedelnqyb")
         ]
     ]
+   )
   return buttons
 
 
