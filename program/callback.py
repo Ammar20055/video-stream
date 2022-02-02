@@ -325,7 +325,7 @@ async def close(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("ahmedelnqyb"))
 async def ahmedelnqyb(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""<b>◉ انا احمد النقيب يمكنك التواصل معي..↑↓ \n ◉ عن طريق معرفي اول جروب التواصل بلاسفل..↑↓ \n [𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶](https://t.me/ahmedelnqyb)</b>""",
+        f"""<b>◉ انا احمد النقيب يمكنك التواصل معي..↑↓ \n\n◉ عن طريق معرفي اول جروب التواصل بلاسفل..↑↓ \n\n [𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶](https://t.me/ahmedelnqyb)</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
