@@ -57,9 +57,8 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["vplay", f"vplay@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["/vplay", f"/vplay@{BOT_USERNAME}", "فيديو"]) & other_filters)
 async def vplay(c: Client, m: Message):
-    await m.delete()
     replied = m.reply_to_message
     chat_id = m.chat.id
     user_id = m.from_user.id
@@ -74,56 +73,49 @@ async def vplay(c: Client, m: Message):
     a = await c.get_chat_member(chat_id, aing.id)
     if a.status != "administrator":
         await m.reply_text(
-            f"💡 To use me, I need to be an **Administrator** with the following **permissions**:\n\n» ❌ __Delete messages__\n» ❌ __Invite users__\n» ❌ __Manage video chat__\n\nOnce done, type /reload"
-        )
-        return
-    if not a.can_manage_voice_chats:
-        await m.reply_text(
-            "💡 To use me, Give me the following permission below:"
-            + "\n\n» ❌ __Manage video chat__\n\nOnce done, try again."
-        )
-        return
-    if not a.can_delete_messages:
-        await m.reply_text(
-            "💡 To use me, Give me the following permission below:"
-            + "\n\n» ❌ __Delete messages__\n\nOnce done, try again."
+            f"قم باعطاء البوت الصلاحيات المطلوبة ⚡."
         )
         return
     if not a.can_invite_users:
         await m.reply_text(
-            "💡 To use me, Give me the following permission below:"
-            + "\n\n» ❌ __Add users__\n\nOnce done, try again."
+            "قم باعطاء البوت صلاحية اضافة المستخدمين ⚡."
         )
         return
     try:
         ubot = (await user.get_me()).id
         b = await c.get_chat_member(chat_id, ubot) 
         if b.status == "kicked":
-            await c.unban_chat_member(chat_id, ubot)
-            invitelink = await c.export_chat_invite_link(chat_id)
-            if invitelink.startswith("https://t.me/+"):
-                invitelink = invitelink.replace(
-                    "https://t.me/+", "https://t.me/joinchat/"
-                )
-            await user.join_chat(invitelink)
+            await m.reply_text(
+                f"» **تاكد من عدم حظر الحساب المساعد ⚡ !**\n\n**الحساب المساعد : @{ASSISTANT_NAME} \n  .⚡ لدعوة الحساب من جديد /join ثم قم بكتابة /انضم او"
+            )
+            return
     except UserNotParticipant:
-        try:
-            invitelink = await c.export_chat_invite_link(chat_id)
-            if invitelink.startswith("https://t.me/+"):
-                invitelink = invitelink.replace(
-                    "https://t.me/+", "https://t.me/joinchat/"
+        if m.chat.username:
+            try:
+                await user.join_chat(m.chat.username)
+            except Exception as e:
+                await m.reply_text(f"")
+                return
+        else:
+            try:
+                invitelink = await c.export_chat_invite_link(
+                    m.chat.id
                 )
-            await user.join_chat(invitelink)
-        except UserAlreadyParticipant:
-            pass
-        except Exception as e:
-            return await m.reply_text(
-                f"❌ **userbot failed to join**\n\n**reason**: `{e}`"
+                if invitelink.startswith("https://t.me/+"):
+                    invitelink = invitelink.replace(
+                        "https://t.me/+", "https://t.me/joinchat/"
+                    )
+                await user.join_chat(invitelink)
+            except UserAlreadyParticipant:
+                pass
+            except Exception as e:
+                return await m.reply_text(
+                f""
             )
 
     if replied:
         if replied.video or replied.document:
-            loser = await replied.reply("📥 **downloading video...**")
+            loser = await replied.reply("**جاري التحميل انتظر قليلاً ....** 🤸🏼‍♀️♥️")
             dl = await replied.download()
             link = replied.link
             if len(m.command) < 2:
@@ -135,7 +127,7 @@ async def vplay(c: Client, m: Message):
                 else:
                     Q = 720
                     await loser.edit(
-                        "» __only 720, 480, 360 allowed__ \n💡 **now streaming video in 720p**"
+                        "» __only 720, 480, 360 allowed__ \n**now streaming video in 720p**"
                     )
             try:
                 if replied.video:
