@@ -172,7 +172,7 @@ async def new_chat(c: Client, m: Message):
                 )
             )
 
-@Client.on_message(command("startt") & filters.private & ~filters.edited)
+@Client.on_message(command("/start") & filters.private & ~filters.edited)
 async def startt_(client: Client, message: Message):
     await message.reply_photo(
         photo="https://telegra.ph/file/d5c95c229929d3004b900.jpg",
