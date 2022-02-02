@@ -22,8 +22,7 @@ def stream_markup(user_id):
 
 
 def menu_markup(user_id):
-  buttons = InlineKeyboardMarkup(
-    [
+  buttons = [
         [
             InlineKeyboardButton("𝗣𝗔𝗨𝗦𝗘 ⏸", callback_data=f'cbpause | {user_id}'),
             InlineKeyboardButton("𝗥𝗘𝗦𝗨𝗠𝗘  ▶️", callback_data=f'cbresume | {user_id}')
@@ -35,7 +34,6 @@ def menu_markup(user_id):
             InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", callback_data="ahmedelnqyb")
         ]
     ]
-   )
   return buttons
 
 
