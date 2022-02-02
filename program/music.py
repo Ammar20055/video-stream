@@ -146,9 +146,7 @@ async def play(c: Client, m: Message):
                         reply_markup=InlineKeyboardMarkup(buttons),
                         caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
                     )
-                except Exception as e:
-                    await suhu.delete()
-                    await m.reply_text(f"لم يتم العثور على النتيجة المطلوبة ⚡.")
+                
         else:
             if len(m.command) < 2:
                 await m.reply(
@@ -208,9 +206,6 @@ async def play(c: Client, m: Message):
                                     reply_markup=InlineKeyboardMarkup(buttons),
                                     caption=f"**Name:** [{songname}]({url}) | `music`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                                 )
-                            except Exception as ep:
-                                await suhu.delete()
-                                await m.reply_text(f"لم يتم العثور على النتيجة المطلوبة ⚡.")
 
     else:
         if len(m.command) < 2:
@@ -267,6 +262,3 @@ async def play(c: Client, m: Message):
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"**Name:** [{songname}]({url}) | `music`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                             )
-                        except Exception as ep:
-                            await suhu.delete()
-                            await m.reply_text(f"لم يتم العثور على النتيجة المطلوبة ⚡.")
