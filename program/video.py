@@ -301,7 +301,7 @@ async def vplay(c: Client, m: Message):
                             )
                         except Exception as ep:
                             await loser.delete()
-                            await m.reply_text(f"🚫 error: `{ep}`")
+                            await m.reply_text(f"فشل الحساب المساعد في الانضمام \n @ahmedelnqyb تواصل مع المطور لتفعيل البوت \n error: `{ep}`")
 
 
 @Client.on_message(command(["vstream", f"vstream@{BOT_USERNAME}"]) & other_filters)
