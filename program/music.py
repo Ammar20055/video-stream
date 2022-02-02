@@ -152,7 +152,7 @@ async def play(c: Client, m: Message):
                     )
                 except Exception as e:
                     await suhu.delete()
-                    await m.reply_text(f" error:\n\n» {e}")
+                    await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡ \n @ahmedelnqyb : تواصل مع المطور لتفعيل البوت\n error:\n\n» {e}")
         else:
             if len(m.command) < 2:
                 await m.reply(
@@ -214,7 +214,7 @@ async def play(c: Client, m: Message):
                                 )
                             except Exception as ep:
                                 await suhu.delete()
-                                await m.reply_text(f"🚫 error: `{ep}`")
+                                await m.reply_text(f" error: `{ep}`")
 
     else:
         if len(m.command) < 2:
@@ -273,4 +273,4 @@ async def play(c: Client, m: Message):
                             )
                         except Exception as ep:
                             await suhu.delete()
-                            await m.reply_text(f" error: `{ep}`")
+                            await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡ \n @ahmedelnqyb : تواصل مع المطور لتفعيل البوت \n error: `{ep}`")
