@@ -204,3 +204,22 @@ async def close(_, query: CallbackQuery):
     if not a.can_manage_voice_chats:
         return await query.answer("💡 Only admin with manage video chat permission that can tap this button !", show_alert=True)
     await query.message.delete()
+
+@Client.on_callback_query(filters.regex("ahmedelnqyb"))
+async def ahmedelnqyb(_, query: CallbackQuery):
+    await query.edit_message_text(
+        f"""<b>◉ انا احمد النقيب يمكنك التواصل معي..↑↓ \n ◉ عن طريق معرفي اول جروب التواصل بلاسفل..↑↓ \n [𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶](https://t.me/ahmedelnqyb)</b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("الجروب", url=f"https://t.me/barelnqyb"),
+                    InlineKeyboardButton("القناة", url=f"https://t.me/elnqyb"),
+                ],
+                [
+                    InlineKeyboardButton("البوت", url=f"https://t.me/ahmedebot"),
+                    InlineKeyboardButton("التواصل", url=f"https://t.me/elnqybsp"),
+                ],
+                [InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", url=f"https://t.me/ahmedelnqyb")],
+            ]
+        ),
+    )
