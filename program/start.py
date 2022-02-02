@@ -181,7 +181,7 @@ async def startt_(client: Client, message: Message):
                     [
                         [
                             InlineKeyboardButton("اللغة العربية 🇪🇬", callback_data="arbic"),
-                            InlineKeyboardButton("English language 🇺🇲", Callback_data="english")
+                            InlineKeyboardButton("English language 🇺🇲", callback_data="english")
                         ],
                         [
                             InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", url=f"https://t.me/ahmedelnqyb")
