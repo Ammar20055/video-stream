@@ -63,13 +63,12 @@ async def play(c: Client, m: Message):
     a = await c.get_chat_member(chat_id, aing.id)
     if a.status != "administrator":
         await m.reply_text(
-            f"💡 To use me, I need to be an **Administrator** with the following **permissions**:\n\n» ❌ __Delete messages__\n» ❌ __Invite users__\n» ❌ __Manage video chat__\n\nOnce done, type /reload"
+            f"قم باعطاء البوت الصلاحيات المطلوبة ⚡."
         )
         return
     if not a.can_invite_users:
         await m.reply_text(
-            "💡 To use me, Give me the following permission below:"
-            + "\n\n» ❌ __Add users__\n\nOnce done, try again."
+            "قم باعطاء البوت صلاحية اضافة المستخدمين ⚡."
         )
         return
     try:
@@ -100,7 +99,7 @@ async def play(c: Client, m: Message):
             )
     if replied:
         if replied.audio or replied.voice:
-            suhu = await replied.reply("📥 **downloading audio...**")
+            suhu = await replied.reply("جاري التحميل انتظر قليلاً ....🤸🏼‍♀️♥️")
             dl = await replied.download()
             link = replied.link
             
@@ -120,14 +119,14 @@ async def play(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 buttons = stream_markup(user_id)
                 await suhu.delete()
-                await m.reply_photo(
-                    photo=f"{IMG_1}",
+                await m.reply_video(
+                    video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({link}) | `music`\n⏱️ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                    caption=f"**Track added to queue »** `{pos}`\n\n**Name:** [{songname}]({link}) | `music`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                 )
             else:
                 try:
-                    await suhu.edit("🔄 **Joining vc...**")
+                    await suhu.edit("جاري التحميل انتظر قليلاً ....🤸🏼‍♀️♥️")
                     await call_py.join_group_call(
                         chat_id,
                         AudioPiped(
@@ -142,25 +141,25 @@ async def play(c: Client, m: Message):
                     requester = (
                         f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                     )
-                    await m.reply_photo(
-                        photo=f"{IMG_2}",
+                    await m.reply_video(
+                        video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                         reply_markup=InlineKeyboardMarkup(buttons),
-                        caption=f"🗂 **Name:** [{songname}]({link}) | `music`\n💭 **Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
+                        caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
                     )
                 except Exception as e:
                     await suhu.delete()
-                    await m.reply_text(f"🚫 error:\n\n» {e}")
+                    await m.reply_text(f"لم يتم العثور على النتيجة المطلوبة ⚡.")
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "» reply to an **audio file** or **give something to search.**"
+                    "»قم بالرد علي ملف صوتي لتشغيلة ⚡.\n»او قم بكتابة اسم الاغنية ⚡."
                 )
             else:
-                suhu = await c.send_message(chat_id, "🔍 **Searching...**")
+                suhu = await c.send_message(chat_id, "جاري التحميل انتظر قليلاً ....🤸🏼‍♀️♥️")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 if search == 0:
-                    await suhu.edit("❌ **no results found.**")
+                    await suhu.edit("لم يتم العثور على النتيجة المطلوبة ⚡.")
                 else:
                     songname = search[0]
                     title = search[0]
@@ -173,7 +172,7 @@ async def play(c: Client, m: Message):
                     image = await thumb(thumbnail, title, userid, ctitle)
                     veez, ytlink = await ytdl(url)
                     if veez == 0:
-                        await suhu.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                        await suhu.edit(f"حدث خطأ حاول مجدداً ...⚡")
                     else:
                         if chat_id in QUEUE:
                             pos = add_to_queue(
@@ -182,14 +181,14 @@ async def play(c: Client, m: Message):
                             await suhu.delete()
                             buttons = stream_markup(user_id)
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"**Track added to queue »** `{pos}`\n\n**Name:** [{songname}]({url}) | `music`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                             )
                         else:
                             try:
-                                await suhu.edit("🔄 **Joining vc...**")
+                                await suhu.edit("جاري التحميل انتظر قليلاً ....🤸🏼‍♀️♥️")
                                 await call_py.join_group_call(
                                     chat_id,
                                     AudioPiped(
@@ -204,26 +203,26 @@ async def play(c: Client, m: Message):
                                 requester = (
                                     f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 )
-                                await m.reply_photo(
-                                    photo=image,
+                                await m.reply_video(
+                                    video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                                     reply_markup=InlineKeyboardMarkup(buttons),
-                                    caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                    caption=f"**Name:** [{songname}]({url}) | `music`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                                 )
                             except Exception as ep:
                                 await suhu.delete()
-                                await m.reply_text(f"🚫 error: `{ep}`")
+                                await m.reply_text(f"لم يتم العثور على النتيجة المطلوبة ⚡.")
 
     else:
         if len(m.command) < 2:
             await m.reply(
-                "» reply to an **audio file** or **give something to search.**"
+                "»قم بالرد علي ملف صوتي لتشغيلة ⚡.\n»او قم بكتابة اسم الاغنية ⚡."
             )
         else:
-            suhu = await c.send_message(chat_id, "🔍 **Searching...**")
+            suhu = await c.send_message(chat_id, "جاري التحميل انتظر قليلاً ....🤸🏼‍♀️♥️")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             if search == 0:
-                await suhu.edit("❌ **no results found.**")
+                await suhu.edit("لم يتم العثور على النتيجة المطلوبة ⚡.")
             else:
                 songname = search[0]
                 title = search[0]
@@ -236,21 +235,21 @@ async def play(c: Client, m: Message):
                 image = await thumb(thumbnail, title, userid, ctitle)
                 veez, ytlink = await ytdl(url)
                 if veez == 0:
-                    await suhu.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                    await suhu.edit(f"حدث خطأ حاول مجدداً ...⚡")
                 else:
                     if chat_id in QUEUE:
                         pos = add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                         await suhu.delete()
                         requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         buttons = stream_markup(user_id)
-                        await m.reply_photo(
-                            photo=image,
+                        await m.reply_video(
+                            video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                             reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                            caption=f"**Track added to queue »** `{pos}`\n\n**Name:** [{songname}]({url}) | `music`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                         )
                     else:
                         try:
-                            await suhu.edit("🔄 **Joining vc...**")
+                            await suhu.edit("جاري التحميل انتظر قليلاً ....🤸🏼‍♀️♥️")
                             await call_py.join_group_call(
                                 chat_id,
                                 AudioPiped(
@@ -263,11 +262,11 @@ async def play(c: Client, m: Message):
                             await suhu.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"**Name:** [{songname}]({url}) | `music`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                             )
                         except Exception as ep:
                             await suhu.delete()
-                            await m.reply_text(f"🚫 error: `{ep}`")
+                            await m.reply_text(f"لم يتم العثور على النتيجة المطلوبة ⚡.")
