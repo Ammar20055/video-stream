@@ -15,7 +15,7 @@ from pyrogram.types import (
 )
 
 
-@Client.on_message(command(["reload", f"reload@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["reload", "/reload"]) & other_filters)
 @authorized_users_only
 async def update_admin(client, message):
     global admins
