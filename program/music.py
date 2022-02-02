@@ -5,8 +5,8 @@
 
 # pyrogram stuff
 from pyrogram import Client
-from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant, InlineKeyboardButton
-from pyrogram.types import InlineKeyboardMarkup, Message
+from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
+from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton
 # pytgcalls stuff
 from pytgcalls import StreamType
 from pytgcalls.types.input_stream import AudioPiped
@@ -135,7 +135,7 @@ async def play(c: Client, m: Message):
                 await suhu.delete()
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    reply_markup=InlineKeyboardMarkup(buttons),
+                    reply_markup=Keyboard,
                     caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({link}) | `music`\n⏱️ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                 )
             else:
@@ -157,7 +157,7 @@ async def play(c: Client, m: Message):
                     )
                     await m.reply_photo(
                         photo=f"{IMG_2}",
-                        reply_markup=InlineKeyboardMarkup(buttons),
+                        reply_markup=Keyboard,
                         caption=f"🗂 **Name:** [{songname}]({link}) | `music`\n💭 **Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
                     )
                 except Exception as e:
@@ -197,7 +197,7 @@ async def play(c: Client, m: Message):
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
                                 photo=image,
-                                reply_markup=InlineKeyboardMarkup(buttons),
+                                reply_markup=Keyboard,
                                 caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                             )
                         else:
@@ -213,13 +213,13 @@ async def play(c: Client, m: Message):
                                 )
                                 add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                                 await suhu.delete()
-                                buttons = stream_markup(user_id)
+                                buttons = Keyboard
                                 requester = (
                                     f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 )
                                 await m.reply_photo(
                                     photo=image,
-                                    reply_markup=InlineKeyboardMarkup(buttons),
+                                    reply_markup=Keyboard,
                                     caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                                 )
                             except Exception as ep:
@@ -255,10 +255,10 @@ async def play(c: Client, m: Message):
                         pos = add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                         await suhu.delete()
                         requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-                        buttons = stream_markup(user_id)
+                        buttons = Keyboard
                         await m.reply_photo(
                             photo=image,
-                            reply_markup=InlineKeyboardMarkup(buttons),
+                            reply_markup=Keyboard,
                             caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                         )
                     else:
@@ -275,10 +275,10 @@ async def play(c: Client, m: Message):
                             add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)
                             await suhu.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-                            buttons = stream_markup(user_id)
+                            buttons = Keyboard
                             await m.reply_photo(
                                 photo=image,
-                                reply_markup=InlineKeyboardMarkup(buttons),
+                                reply_markup=Keyboard,
                                 caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
                             )
                         except Exception as ep:
