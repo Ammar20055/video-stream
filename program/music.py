@@ -77,7 +77,7 @@ async def play(c: Client, m: Message):
         b = await c.get_chat_member(chat_id, ubot)
         if b.status == "kicked":
             await c.unban_chat_member(chat_id, ubot)
-            await c.reply_text(تاكد من عدم حظر الحساب المساعد ⚡ .\n {ASSISTANT_NAME} : الحساب )
+            await m.reply_text("تاكد من عدم حظر الحساب المساعد ⚡ .\n {ASSISTANT_NAME} : الحساب ")
             invitelink = await c.export_chat_invite_link(chat_id)
             if invitelink.startswith("https://t.me/+"):
                 invitelink = invitelink.replace(
