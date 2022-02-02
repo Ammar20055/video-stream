@@ -199,7 +199,7 @@ async def cbsudo(_, query: CallbackQuery):
 
 
 @Client.on_callback_query(filters.regex("bhowtouse"))
-async def cbguides(_, query: CallbackQuery):
+async def acbguides(_, query: CallbackQuery):
     await query.edit_message_text(
         f""" **طريقة تفعيل البوت في مجموعتك ⚡♥️:**
 1.) **اولا قم بإضافة البوت اللي مجموعتك ⚡.**
@@ -218,7 +218,7 @@ async def cbguides(_, query: CallbackQuery):
 
 
 @Client.on_callback_query(filters.regex("bcmds"))
-async def cbcmds(_, query: CallbackQuery):
+async def acbcmds(_, query: CallbackQuery):
     await query.edit_message_text(
         f""" **Hello [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**
 » **اتبع الازرار بالاسفل لمعرفة طريقة التشغيل ⚡**
@@ -239,7 +239,7 @@ async def cbcmds(_, query: CallbackQuery):
 
 
 @Client.on_callback_query(filters.regex("bbasic"))
-async def cbbasic(_, query: CallbackQuery):
+async def acbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""اوامر التشغيل ⚡:
 » /play (اسم الموسيقي / link ) - لتشغيل الموسيقى في المحادثة الصوتية 
@@ -262,7 +262,7 @@ async def cbbasic(_, query: CallbackQuery):
 
 
 @Client.on_callback_query(filters.regex("badmin"))
-async def cbadmin(_, query: CallbackQuery):
+async def acbadmin(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""اوامر التحكم للخاصة بالادمنية:
 » /pause - ايقاف التشغيل موقتأ
@@ -282,7 +282,7 @@ async def cbadmin(_, query: CallbackQuery):
     )
 
 @Client.on_callback_query(filters.regex("bsudo"))
-async def cbsudo(_, query: CallbackQuery):
+async def acbsudo(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""اوامر المطورين :
 » /rmw - لمسح جميع الملفات المتخزنة
@@ -298,7 +298,7 @@ async def cbsudo(_, query: CallbackQuery):
     )
 
 @Client.on_callback_query(filters.regex("cbmenu"))
-async def cbmenu(_, query: CallbackQuery):
+async def acbmenu(_, query: CallbackQuery):
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
         return await query.answer("💡 Only admin with manage video chat permission that can tap this button !", show_alert=True)
