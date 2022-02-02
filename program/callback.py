@@ -37,7 +37,7 @@ async def arbic(_, query: CallbackQuery):
                 [InlineKeyboardButton("طريقة التفعيل", callback_data="bhowtouse")],
                 [
                     InlineKeyboardButton("طريقة التشغيل", callback_data="bcmds"),
-                    InlineKeyboardButton("المطور", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("المطور", url=f"https://t.me/ahmedelnqyb"),
                 ],
                 [
                     InlineKeyboardButton(
@@ -57,7 +57,7 @@ async def arbic(_, query: CallbackQuery):
         disable_web_page_preview=True,
     )
 
-Client.on_callback_query(filters.regex("english"))
+@Client.on_callback_query(filters.regex("english"))
 async def english(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
