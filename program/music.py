@@ -53,7 +53,7 @@ Keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton("Resume ▶️", callback_data="cbresume")
         ],
         [
-            InlineKeyboardButton("Skip ⏩", callback_data="cbskip"),
+            InlineKeyboardButton("loop 🔁", callback_data="cbskip"),
             InlineKeyboardButton("End ⏹", callback_data="cbend")
         ],
         [
