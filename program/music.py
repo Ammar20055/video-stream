@@ -46,24 +46,8 @@ async def ytdl(link: str):
         return 1, stdout
     return 0, stderr
 
-Keyboard = InlineKeyboardMarkup(
-    [
-        [
-            InlineKeyboardButton("Pause ⏸", callback_data="cbpause"),
-            InlineKeyboardButton("Resume ▶️", callback_data="cbresume")
-        ],
-        [
-            InlineKeyboardButton("Skip ⏩", callback_data="cbskip"),
-            InlineKeyboardButton("End ⏹", callback_data="cbend")
-        ],
-        [
-            InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", callback_data="ahmedelnqyb")
-        ]
-    ]
-)
 
-
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}", "شغل", "تشغيل"]) & other_filters)
+@Client.on_message(command(["/play", f"/play@{BOT_USERNAME}", "شغل", "تشغيل"]) & other_filters)
 async def play(c: Client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
