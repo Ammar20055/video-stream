@@ -18,7 +18,7 @@ from config import (
 
 
 @Client.on_callback_query(filters.regex("arbic"))
-async def cbstart(_, query: CallbackQuery):
+async def arbic(_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
         f"""مرحباً بك \n
@@ -58,7 +58,7 @@ async def cbstart(_, query: CallbackQuery):
     )
 
 Client.on_callback_query(filters.regex("english"))
-async def cbstart(_, query: CallbackQuery):
+async def english (_, query: CallbackQuery):
     await query.answer("home start")
     await query.edit_message_text(
         f"A Telegram Music Bot Based Mongodb \n Add Me To Ur Chat For and Help and And Support Click On Buttons \n 💞  These Features AI Based \nPowered By [𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶](https://t.me/ahmedelnqyb) """,
