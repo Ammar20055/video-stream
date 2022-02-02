@@ -174,16 +174,17 @@ async def new_chat(c: Client, m: Message):
 
 @Client.on_message(command("/start") & filters.private & ~filters.edited)
 async def startt_(client: Client, message: Message):
-    await message.reply_photo(
-        photo="https://telegra.ph/file/d5c95c229929d3004b900.jpg",
+    await message.reply_video(
+        video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
         caption=f"",
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("اللغة العربية 🇪🇬", callback_data="arbic")
+                            InlineKeyboardButton("اللغة العربية 🇪🇬", callback_data="arbic"),
+                            InlineKeyboardButton("English language 🇺🇲", Callback_data="english")
                         ],
                         [
-                            InlineKeyboardButton("English language 🇺🇲", callback_data="english")
+                            InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", url=f"https://t.me/ahmedelnqyb")
                         ]
                     ]
                 )
