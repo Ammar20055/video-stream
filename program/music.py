@@ -19,7 +19,7 @@ from driver.filters import command, other_filters
 from driver.queues import QUEUE, add_to_queue
 from driver.veez import call_py, user
 from driver.utils import bash
-from config import BOT_USERNAME, IMG_1, IMG_2
+from config import BOT_USERNAME, IMG_1, IMG_2, ASSISTANT_NAME
 # youtube-dl stuff
 from youtubesearchpython import VideosSearch
 
@@ -75,25 +75,31 @@ async def play(c: Client, m: Message):
         ubot = (await user.get_me()).id
         b = await c.get_chat_member(chat_id, ubot)
         if b.status == "kicked":
-            await c.unban_chat_member(chat_id, ubot)
-            invitelink = await c.export_chat_invite_link(chat_id)
-            if invitelink.startswith("https://t.me/+"):
-                invitelink = invitelink.replace(
-                    "https://t.me/+", "https://t.me/joinchat/"
-                )
-            await user.join_chat(invitelink)
+            await m.reply_text(
+                f"» **تاكد من عدم حظر الحساب المساعد ⚡ !**\n\n**الحساب المساعد : @{ASSISTANT_NAME} \n  .⚡ لدعوة الحساب من جديد /join ثم قم بكتابة /انضم او"
+            )
+            return
     except UserNotParticipant:
-        try:
-            invitelink = await c.export_chat_invite_link(chat_id)
-            if invitelink.startswith("https://t.me/+"):
-                invitelink = invitelink.replace(
-                    "https://t.me/+", "https://t.me/joinchat/"
+        if m.chat.username:
+            try:
+                await user.join_chat(m.chat.username)
+            except Exception as e:
+                await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡.")
+                return
+        else:
+            try:
+                invitelink = await c.export_chat_invite_link(
+                    m.chat.id
                 )
-            await user.join_chat(invitelink)
-        except UserAlreadyParticipant:
-            pass
-        except Exception as e:
-            return await m.reply_text(
+                if invitelink.startswith("https://t.me/+"):
+                    invitelink = invitelink.replace(
+                        "https://t.me/+", "https://t.me/joinchat/"
+                    )
+                await user.join_chat(invitelink)
+            except UserAlreadyParticipant:
+                pass
+            except Exception as e:
+                return await m.reply_text(
                 f"@ahmedelnqyb تواصل مع المطور لتفعيل البوت"
             )
     if replied:
