@@ -68,8 +68,7 @@ async def play(c: Client, m: Message):
         return
     if not a.can_invite_users:
         await m.reply_text(
-            "قم باعطاء البوت صلاحية اضافة المستخدمين ⚡."
-        )
+            "قم باعطاء البوت صلاحية اضافة المستخدمين ⚡.")
         return
     try:
         ubot = (await user.get_me()).id
@@ -84,7 +83,7 @@ async def play(c: Client, m: Message):
             try:
                 await user.join_chat(m.chat.username)
             except Exception as e:
-                await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡.")
+                await m.reply_text(f"")
                 return
         else:
             try:
@@ -100,8 +99,8 @@ async def play(c: Client, m: Message):
                 pass
             except Exception as e:
                 return await m.reply_text(
-                f"@ahmedelnqyb تواصل مع المطور لتفعيل البوت"
-            )
+                    f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡ \n @ahmedelnqyb : تواصل مع المطور لتفعيل البوت."
+                )
     if replied:
         if replied.audio or replied.voice:
             suhu = await replied.reply("**جاري التحميل انتظر قليلاً ...** 🤸🏼‍♀️♥️")
