@@ -226,10 +226,10 @@ async def acbcmds(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("اوامر التشغيل", callback_data="cbbasic"),
-                    InlineKeyboardButton("اوامر الادمن", callback_data="cbadmin"),
+                    InlineKeyboardButton("اوامر التشغيل", callback_data="bbasic"),
+                    InlineKeyboardButton("اوامر الادمن", callback_data="badmin"),
                 ],[
-                    InlineKeyboardButton("اوامر المطورين", callback_data="cbsudo")
+                    InlineKeyboardButton("اوامر المطورين", callback_data="bsudo")
                 ],[
                     InlineKeyboardButton("𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶", callback_data="ahmedelnqyb")
                 ],
