@@ -172,26 +172,39 @@ async def new_chat(c: Client, m: Message):
                 )
             )
 
-@Client.on_message(command("/start") & filters.private & ~filters.edited)
+@Client.on_message(command("startt") & filters.private & ~filters.edited)
 async def startt_(client: Client, message: Message):
     await message.reply_photo(
         photo="https://telegra.ph/file/d5c95c229929d3004b900.jpg",
-        caption="",
+        caption=f"<b><i>Hello there!! \nI'm a Telegram voice chat music player by @ahmedelnqyb. Enjoy my advanced features along with a simple and sexy interface</b></i>",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "اللغة العربية 🇪🇬",
-                        callback_data="arbic",
+                        "𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶",
+                        url=f"https://t.me/ahmedelnqyb",
                     )
                 ],
                 [
-                    InlineKeyboardButton(
-                        "English language 🇺🇲", callback_data="english"
-                    )
+                    InlineKeyboardButton("Guide 📜", callback_data="arbic"),
+                    InlineKeyboardButton("Commands ", callback_data="english"),
                 ],
-            ]
+                [
+                    InlineKeyboardButton(
+                        "Channel 🍀", url=f"https://t.me/elnqyb"
+                    ),
+                    InlineKeyboardButton(
+                        "group ☕", url="https://t.me/ahmedelnqyb"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "support ", url=f"https://t.me/elnqybsp"
+                    )
+                ]
+           ]
         ),
+    )
 
 chat_watcher_group = 5
 
