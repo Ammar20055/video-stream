@@ -19,7 +19,7 @@ from driver.filters import command, other_filters
 from driver.queues import QUEUE, add_to_queue
 from driver.veez import call_py, user
 from driver.utils import bash
-from config import BOT_USERNAME, IMG_1, IMG_2, ASSISTANT_NAME
+from config import BOT_USERNAME, IMG_1, IMG_2
 # youtube-dl stuff
 from youtubesearchpython import VideosSearch
 
@@ -49,6 +49,7 @@ async def ytdl(link: str):
 
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 async def play(c: Client, m: Message):
+    await m.delete()
     replied = m.reply_to_message
     chat_id = m.chat.id
     user_id = m.from_user.id
@@ -66,6 +67,18 @@ async def play(c: Client, m: Message):
             f"💡 To use me, I need to be an **Administrator** with the following **permissions**:\n\n» ❌ __Delete messages__\n» ❌ __Invite users__\n» ❌ __Manage video chat__\n\nOnce done, type /reload"
         )
         return
+    if not a.can_manage_voice_chats:
+        await m.reply_text(
+            "💡 To use me, Give me the following permission below:"
+            + "\n\n» ❌ __Manage video chat__\n\nOnce done, try again."
+        )
+        return
+    if not a.can_delete_messages:
+        await m.reply_text(
+            "💡 To use me, Give me the following permission below:"
+            + "\n\n» ❌ __Delete messages__\n\nOnce done, try again."
+        )
+        return
     if not a.can_invite_users:
         await m.reply_text(
             "💡 To use me, Give me the following permission below:"
@@ -77,7 +90,6 @@ async def play(c: Client, m: Message):
         b = await c.get_chat_member(chat_id, ubot)
         if b.status == "kicked":
             await c.unban_chat_member(chat_id, ubot)
-            await m.reply_text("تاكد من عدم حظر الحساب المساعد ⚡ .\n {ASSISTANT_NAME} : الحساب ")
             invitelink = await c.export_chat_invite_link(chat_id)
             if invitelink.startswith("https://t.me/+"):
                 invitelink = invitelink.replace(
@@ -96,7 +108,7 @@ async def play(c: Client, m: Message):
             pass
         except Exception as e:
             return await m.reply_text(
-                f"@ahmedelnqyb تواصل مع المطور لتفعيل البوت"
+                f"❌ **userbot failed to join**\n\n**reason**: `{e}`"
             )
     if replied:
         if replied.audio or replied.voice:
@@ -120,11 +132,11 @@ async def play(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 buttons = stream_markup(user_id)
                 await suhu.delete()
-                await m.reply_video(
-                video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
-                reply_markup=InlineKeyboardMarkup(buttons),
-                caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
-            )
+                await m.reply_photo(
+                    photo=f"{IMG_1}",
+                    reply_markup=InlineKeyboardMarkup(buttons),
+                    caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({link}) | `music`\n⏱️ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                )
             else:
                 try:
                     await suhu.edit("🔄 **Joining vc...**")
@@ -142,11 +154,11 @@ async def play(c: Client, m: Message):
                     requester = (
                         f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                     )
-                    await m.reply_video(
-                    video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
-                    reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
-                )
+                    await m.reply_photo(
+                        photo=f"{IMG_2}",
+                        reply_markup=InlineKeyboardMarkup(buttons),
+                        caption=f"🗂 **Name:** [{songname}]({link}) | `music`\n💭 **Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
+                    )
                 except Exception as e:
                     await suhu.delete()
                     await m.reply_text(f"🚫 error:\n\n» {e}")
@@ -182,11 +194,11 @@ async def play(c: Client, m: Message):
                             await suhu.delete()
                             buttons = stream_markup(user_id)
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-                            await m.reply_video(
-                            video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
-                            reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
-                        )
+                            await m.reply_photo(
+                                photo=image,
+                                reply_markup=InlineKeyboardMarkup(buttons),
+                                caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                            )
                         else:
                             try:
                                 await suhu.edit("🔄 **Joining vc...**")
@@ -204,11 +216,11 @@ async def play(c: Client, m: Message):
                                 requester = (
                                     f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 )
-                                await m.reply_video(
-                                video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
-                                reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
-                            )
+                                await m.reply_photo(
+                                    photo=image,
+                                    reply_markup=InlineKeyboardMarkup(buttons),
+                                    caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                )
                             except Exception as ep:
                                 await suhu.delete()
                                 await m.reply_text(f"🚫 error: `{ep}`")
@@ -243,11 +255,11 @@ async def play(c: Client, m: Message):
                         await suhu.delete()
                         requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         buttons = stream_markup(user_id)
-                        await m.reply_video(
-                        video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
-                        reply_markup=InlineKeyboardMarkup(buttons),
-                        caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
-                    )
+                        await m.reply_photo(
+                            photo=image,
+                            reply_markup=InlineKeyboardMarkup(buttons),
+                            caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                        )
                     else:
                         try:
                             await suhu.edit("🔄 **Joining vc...**")
@@ -263,11 +275,11 @@ async def play(c: Client, m: Message):
                             await suhu.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
-                            await m.reply_video(
-                            video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
-                            reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"**Name:** [{songname}]({link}) | `music`\n**Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
-                        )
+                            await m.reply_photo(
+                                photo=image,
+                                reply_markup=InlineKeyboardMarkup(buttons),
+                                caption=f"🗂 **Name:** [{songname}]({url}) | `music`\n**⏱ Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                            )
                         except Exception as ep:
                             await suhu.delete()
                             await m.reply_text(f"🚫 error: `{ep}`")
