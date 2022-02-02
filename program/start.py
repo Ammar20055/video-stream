@@ -172,6 +172,26 @@ async def new_chat(c: Client, m: Message):
                 )
             )
 
+@Client.on_message(command("/start") & filters.private & ~filters.edited)
+async def startt_(client: Client, message: Message):
+    await message.reply_photo(
+        photo="https://telegra.ph/file/d5c95c229929d3004b900.jpg",
+        caption=""
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "اللغة العربية 🇪🇬",
+                        callback_data="arbic",
+                    )
+                ],
+                [
+                    InlineKeyboardButton(
+                        "English language 🇺🇲", callback_data="english"
+                    )
+                ],
+            ]
+        ),
 
 chat_watcher_group = 5
 
