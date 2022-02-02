@@ -144,10 +144,10 @@ async def vplay(c: Client, m: Message):
                 await loser.delete()
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 buttons = stream_markup(user_id)
-                await m.reply_photo(
-                    photo=f"{IMG_1}",
+                await m.reply_video(
+                    video=f"https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({link}) | `video`\n⏱️ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                    caption=f"**Track added to queue »** `{pos}`\n\n**Name:** [{songname}]({link}) | `video`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                 )
             else:
                 if Q == 720:
@@ -170,10 +170,10 @@ async def vplay(c: Client, m: Message):
                 await loser.delete()
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 buttons = stream_markup(user_id)
-                await m.reply_photo(
-                    photo=f"{IMG_2}",
+                await m.reply_video(
+                    video=f"https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"🗂 **Name:** [{songname}]({link}) | `video`\n⏱️ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                    caption=f"**Name:** [{songname}]({link}) | `video`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                 )
         else:
             if len(m.command) < 2:
@@ -187,7 +187,7 @@ async def vplay(c: Client, m: Message):
                 Q = 720
                 amaze = HighQualityVideo()
                 if search == 0:
-                    await loser.edit("❌ **no results found.**")
+                    await loser.edit(" **no results found.**")
                 else:
                     songname = search[0]
                     title = search[0]
@@ -200,7 +200,7 @@ async def vplay(c: Client, m: Message):
                     image = await thumb(thumbnail, title, userid, ctitle)
                     veez, ytlink = await ytdl(url)
                     if veez == 0:
-                        await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                        await loser.edit(f" yt-dl issues detected\n\n» `{ytlink}`")
                     else:
                         if chat_id in QUEUE:
                             pos = add_to_queue(
@@ -212,7 +212,7 @@ async def vplay(c: Client, m: Message):
                             await m.reply_photo(
                                 photo=image,
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"**Track added to queue »** `{pos}`\n\n**Name:** [{songname}]({url}) | `video`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                             )
                         else:
                             try:
@@ -230,14 +230,14 @@ async def vplay(c: Client, m: Message):
                                 await loser.delete()
                                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                                 buttons = stream_markup(user_id)
-                                await m.reply_photo(
-                                    photo=image,
+                                await m.reply_video(
+                                    video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                                     reply_markup=InlineKeyboardMarkup(buttons),
-                                    caption=f"🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                    caption=f"**Name:** [{songname}]({url}) | `video`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                                 )
                             except Exception as ep:
                                 await loser.delete()
-                                await m.reply_text(f"🚫 error: `{ep}`")
+                                await m.reply_text(f" error: `{ep}`")
 
     else:
         if len(m.command) < 2:
@@ -251,7 +251,7 @@ async def vplay(c: Client, m: Message):
             Q = 720
             amaze = HighQualityVideo()
             if search == 0:
-                await loser.edit("❌ **no results found.**")
+                await loser.edit(" **no results found.**")
             else:
                 songname = search[0]
                 title = search[0]
@@ -264,7 +264,7 @@ async def vplay(c: Client, m: Message):
                 image = await thumb(thumbnail, title, userid, ctitle)
                 veez, ytlink = await ytdl(url)
                 if veez == 0:
-                    await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
+                    await loser.edit(f" yt-dl issues detected\n\n» `{ytlink}`")
                 else:
                     if chat_id in QUEUE:
                         pos = add_to_queue(chat_id, songname, ytlink, url, "Video", Q)
@@ -273,10 +273,10 @@ async def vplay(c: Client, m: Message):
                             f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                         )
                         buttons = stream_markup(user_id)
-                        await m.reply_photo(
-                            photo=image,
+                        await m.reply_video(
+                            video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                             reply_markup=InlineKeyboardMarkup(buttons),
-                            caption=f"💡 **Track added to queue »** `{pos}`\n\n🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                            caption=f"**Track added to queue »** `{pos}`\n\n**Name:** [{songname}]({url}) | `video`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                         )
                     else:
                         try:
@@ -306,7 +306,6 @@ async def vplay(c: Client, m: Message):
 
 @Client.on_message(command(["vstream", f"vstream@{BOT_USERNAME}"]) & other_filters)
 async def vstream(c: Client, m: Message):
-    await m.delete()
     chat_id = m.chat.id
     user_id = m.from_user.id
     if m.sender_chat:
@@ -320,25 +319,12 @@ async def vstream(c: Client, m: Message):
     a = await c.get_chat_member(chat_id, aing.id)
     if a.status != "administrator":
         await m.reply_text(
-            f"💡 To use me, I need to be an **Administrator** with the following **permissions**:\n\n» ❌ __Delete messages__\n» ❌ __Invite users__\n» ❌ __Manage video chat__\n\nOnce done, type /reload"
-        )
-        return
-    if not a.can_manage_voice_chats:
-        await m.reply_text(
-            "💡 To use me, Give me the following permission below:"
-            + "\n\n» ❌ __Manage video chat__\n\nOnce done, try again."
-        )
-        return
-    if not a.can_delete_messages:
-        await m.reply_text(
-            "💡 To use me, Give me the following permission below:"
-            + "\n\n» ❌ __Delete messages__\n\nOnce done, try again."
+            f"قم باعطاء البوت الصلاحيات المطلوبة ⚡."
         )
         return
     if not a.can_invite_users:
         await m.reply_text(
-            "💡 To use me, Give me the following permission below:"
-            + "\n\n» ❌ __Add users__\n\nOnce done, try again."
+            "قم باعطاء البوت صلاحية اضافة المستخدمين ⚡."
         )
         return
     try:
@@ -364,7 +350,7 @@ async def vstream(c: Client, m: Message):
             pass
         except Exception as e:
             return await m.reply_text(
-                f"❌ **userbot failed to join**\n\n**reason**: `{e}`"
+                f"@ahmedelnqyb تواصل مع المطور لتفعيل البوت ⚡."
             )
 
     if len(m.command) < 2:
@@ -383,7 +369,7 @@ async def vstream(c: Client, m: Message):
             else:
                 Q = 720
                 await m.reply(
-                    "» __only 720, 480, 360 allowed__ \n💡 **now streaming video in 720p**"
+                    "» __only 720, 480, 360 allowed__ \n**now streaming video in 720p**"
                 )
             loser = await c.send_message(chat_id, "🔄 **processing stream...**")
         else:
@@ -398,17 +384,17 @@ async def vstream(c: Client, m: Message):
             veez = 1
 
         if veez == 0:
-            await loser.edit(f"❌ yt-dl issues detected\n\n» `{livelink}`")
+            await loser.edit(f" yt-dl issues detected\n\n» `{livelink}`")
         else:
             if chat_id in QUEUE:
                 pos = add_to_queue(chat_id, "Live Stream", livelink, link, "Video", Q)
                 await loser.delete()
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 buttons = stream_markup(user_id)
-                await m.reply_photo(
-                    photo=f"{IMG_1}",
+                await m.reply_video(
+                    video=f"https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n💭 **Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
+                    caption=f"**Track added to queue »** `{pos}`\n\n**Chat:** `{chat_id}`\n**Request by:** {requester}",
                 )
             else:
                 if Q == 720:
@@ -434,11 +420,11 @@ async def vstream(c: Client, m: Message):
                         f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                     )
                     buttons = stream_markup(user_id)
-                    await m.reply_photo(
-                        photo=f"{IMG_2}",
+                    await m.reply_video(
+                        video=f"https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                         reply_markup=InlineKeyboardMarkup(buttons),
-                        caption=f"💡 **[Video Live]({link}) stream started.**\n\n💭 **Chat:** `{chat_id}`\n🧸 **Request by:** {requester}",
+                        caption=f"**Video Live stream started.**\n\n**Chat:** `{chat_id}`\n**Request by:** {requester}",
                     )
                 except Exception as ep:
                     await loser.delete()
-                    await m.reply_text(f"🚫 error: `{ep}`")
+                    await m.reply_text(f"فشل الحساب المساعد في الانضمام ⚡.\n @ahmedelnqyb تواصل مع المطور لتفعيل البوت ⚡. error: `{ep}`")
