@@ -19,7 +19,7 @@ from driver.filters import command, other_filters
 from driver.queues import QUEUE, add_to_queue
 from driver.veez import call_py, user
 from driver.utils import bash
-from config import BOT_USERNAME, IMG_1, IMG_2
+from config import BOT_USERNAME, IMG_1, IMG_2, ASSISTANT_NAME
 # youtube-dl stuff
 from youtubesearchpython import VideosSearch
 
