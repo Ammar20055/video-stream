@@ -1,4 +1,3 @@
-from typing import Any, Dict, Union
 from cache.admins import admins
 from driver.veez import call_py, bot
 from pyrogram import Client, filters
@@ -15,24 +14,6 @@ from pyrogram.types import (
     Message,
 )
 
-GROUPS: Dict[int, Dict[str, Any]] = {}
-
-def set_group(chat_id: int, **kwargs) -> None:
-    global GROUPS
-    for key, value in kwargs.items():
-        GROUPS[m.chat_id][key] = value
-
-@Client.on_callback_query(filters.regex("loop"))
-async def loop(_, query: CallbackQuery):
-    a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
-    chat_id = message.chat.id
-    group = get_group(chat_id)
-    if group["loop"]:
-        set_group(chat_id, loop=False)
-        return await query.answer("لا يمكنك القيام بذلك ")
-    elif group["loop"] == False:
-        set_group(chat_id, loop=True)
-        return await query.answer("سوف يتكرر التشغيل ⚡")
 
 @Client.on_message(command(["reload", f"reload@{BOT_USERNAME}"]) & other_filters)
 @authorized_users_only
