@@ -85,7 +85,7 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "🌐 Source Code", url="https://github.com/levina-lab/video-stream"
+                        "🌐 Source Code", url="https://github.com"
                     )
                 ],
             ]
@@ -176,7 +176,7 @@ async def new_chat(c: Client, m: Message):
 async def startt_(client: Client, message: Message):
     await message.reply_photo(
         photo="https://telegra.ph/file/d5c95c229929d3004b900.jpg",
-        caption=f"...........................",
+        caption=f"",
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
