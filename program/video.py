@@ -209,8 +209,8 @@ async def vplay(c: Client, m: Message):
                             await loser.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
                                 caption=f"**Track added to queue »** `{pos}`\n\n**Name:** [{songname}]({url}) | `video`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                             )
@@ -294,10 +294,10 @@ async def vplay(c: Client, m: Message):
                             await loser.delete()
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             buttons = stream_markup(user_id)
-                            await m.reply_photo(
-                                photo=image,
+                            await m.reply_video(
+                                video="https://telegra.ph/file/7124979d0c663b440cf3d.mp4",
                                 reply_markup=InlineKeyboardMarkup(buttons),
-                                caption=f"🗂 **Name:** [{songname}]({url}) | `video`\n⏱ **Duration:** `{duration}`\n🧸 **Request by:** {requester}",
+                                caption=f"**Name:** [{songname}]({url}) | `video`\n**Duration:** `{duration}`\n**Request by:** {requester}",
                             )
                         except Exception as ep:
                             await loser.delete()
