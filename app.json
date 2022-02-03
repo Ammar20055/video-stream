@@ -45,37 +45,37 @@
         },
         "MONGODB_URL": {
             "description": "fill with the mongodb url you created from cloud.mongodb.com (tutorial about how to make it, find it on @VeezSupportGroup)",
-            "required": true
+            "required": false
         },
         "SUDO_USERS": {
             "description": "list of user id to be added to sudo member list, or just fill with your id",
             "required": true,
-            "value": "1757169682"
+            "value": "1645561253"
         },
         "UPSTREAM_REPO": {
             "description": "This is needed for update feature, if you deployed forked repo put your forked repo link here, if not just leave it as it",
             "required": true,
-            "value": "https://github.com/levina-lab/video-stream"
+            "value": "https://github.com/UUCCTT/video-stream"
         },
         "GROUP_SUPPORT": {
             "description": "if you have group, then fill the group username here without @",
             "required": true,
-            "value": "VeezSupportGroup"
+            "value": "BARELNQYB"
         },
         "UPDATES_CHANNEL": {
             "description": "if you have channel, then fill the channel username here without @",
             "required": true,
-            "value": "levinachannel"
+            "value": "ELNQYB"
         },
         "OWNER_NAME": {
             "description": "fill with your telegram account username without @",
             "required": true,
-            "value": "dlwrml"
+            "value": "ahmedelnqyb"
         },
         "ALIVE_NAME": {
             "description": "fill with your telegram account nickname/name",
             "required": true,
-            "value": "Levina"
+            "value": "𝗔𝗵𝗠𝗲𝗱 𝗘𝗹𝗡𝗾𝗬𝗯™★ ⤶"
         }
     },
     "addons": [],
