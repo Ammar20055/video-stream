@@ -1,5 +1,6 @@
 """ inline section button """
 
+from config import BOT_USERNAME
 from pyrogram.types import (
   CallbackQuery,
   InlineKeyboardButton,
