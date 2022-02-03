@@ -274,4 +274,4 @@ async def play(c: Client, m: Message):
                             )
                         except Exception as ep:
                             await suhu.delete()
-                            await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡\n @{ass_uname} : الحساب المساعد \n او قم بالغاء الحظر عن الحساب المساعد  \n @ahmedelnqyb : تواصل مع المطور لتفعيل البوت \n\n {ep} ")
+                            await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡\n @{ass_uname} : الحساب المساعد \n او قم بالغاء الحظر عن الحساب المساعد  \n https://t.me/elnqybsp : تواصل مع المطور لتفعيل البوت \n\n {ep} ")
