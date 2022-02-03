@@ -20,6 +20,7 @@ from driver.queues import QUEUE, add_to_queue
 from driver.veez import call_py, user
 from driver.utils import bash
 from config import BOT_USERNAME, IMG_1, IMG_2, ASSISTANT_NAME
+from program.start import ass_uname
 # youtube-dl stuff
 from youtubesearchpython import VideosSearch
 
@@ -273,4 +274,4 @@ async def play(c: Client, m: Message):
                             )
                         except Exception as ep:
                             await suhu.delete()
-                            await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡ \n @ahmedelnqyb : تواصل مع المطور لتفعيل البوت \n error: `{ep}`")
+                            await m.reply_text(f"فشل الحساب المساعد في الانضمام اللي المجموعة ⚡\n @{ass_uname} : الحساب المساعد \n او قم بالغاء الحظر عن الحساب المساعد  \n @ahmedelnqyb : تواصل مع المطور لتفعيل البوت \n\n {ep} ")
