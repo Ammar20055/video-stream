@@ -308,7 +308,7 @@ async def acbmenu(_, query: CallbackQuery):
     chat = query.message.chat.title
     if chat_id in QUEUE:
           await query.edit_message_text(
-              f"",
+              f"𝒴𝒪𝒰 𝒞𝒜𝒩 𝒞𝒪𝒩𝒯ℛ𝒪ℒ 𝒯ℋℛ𝒪𝒰𝒢ℋ 𝒯ℋℰ ℬ𝒰𝒯𝒯𝒪𝒩𝒮 ℬℰℒ𝒪𝒲",
               reply_markup=InlineKeyboardMarkup(buttons),
           )
     else:
@@ -329,8 +329,8 @@ async def ahmedelnqyb(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("الجروب", url=f"https://t.me/barelnqyb"),
                     InlineKeyboardButton("القناة", url=f"https://t.me/elnqyb"),
+                    InlineKeyboardButton("الجروب", url=f"https://t.me/barelnqyb"),
                 ],
                 [
                     InlineKeyboardButton("البوت", url=f"https://t.me/ahmedebot"),
