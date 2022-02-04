@@ -308,7 +308,7 @@ async def acbmenu(_, query: CallbackQuery):
     chat = query.message.chat.title
     if chat_id in QUEUE:
           await query.edit_message_text(
-              f"𝒴𝒪𝒰 𝒞𝒜𝒩 𝒞𝒪𝒩𝒯ℛ𝒪ℒ 𝒯ℋℛ𝒪𝒰𝒢ℋ 𝒯ℋℰ ℬ𝒰𝒯𝒯𝒪𝒩𝒮 ℬℰℒ𝒪𝒲",
+              f"𝗬𝗼𝘂 𝗰𝗮𝗻 𝗰𝗼𝗻𝘁𝗿𝗼𝗹 𝘁𝗵𝗿𝗼𝘂𝗴𝗵 𝘁𝗵𝗲 𝗯𝘂𝘁𝘁𝗼𝗻 𝗯𝗲𝗹𝗼𝘄",
               reply_markup=InlineKeyboardMarkup(buttons),
           )
     else:
