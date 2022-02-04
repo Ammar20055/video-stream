@@ -20,7 +20,6 @@ from driver.queues import QUEUE, add_to_queue
 from driver.veez import call_py, user
 from driver.utils import bash
 from config import BOT_USERNAME, IMG_1, IMG_2, ASSISTANT_NAME
-from program.start import ass_uname
 # youtube-dl stuff
 from youtubesearchpython import VideosSearch
 
@@ -59,6 +58,7 @@ async def play(c: Client, m: Message):
         )
     try:
         aing = await c.get_me()
+        ass_uname = (await user.get_me()).username
     except Exception as e:
         return await m.reply_text(f"error:\n\n{e}")
     a = await c.get_chat_member(chat_id, aing.id)
