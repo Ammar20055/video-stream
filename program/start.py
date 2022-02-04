@@ -176,7 +176,7 @@ async def new_chat(c: Client, m: Message):
 async def startt_(client: Client, message: Message):
     await message.reply_photo(
         photo=f"{ALIVE_IMG}",
-        caption=f"𝓒𝓗𝓞𝓞𝓢𝓔 𝓣𝓗𝓔 𝓛𝓐𝓝𝓖𝓤𝓐𝓖𝓔 𝓣𝓞 𝓢𝓔𝓔 𝓗𝓞𝓦 𝓣𝓞 𝓟𝓛𝓐𝓨",
+        caption=f"𝗦𝗲𝗹𝗹𝗰𝘁 𝗹𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝘁𝗼 𝗹𝗲𝗮𝗿𝗻 𝗺𝗼𝗿𝗲",
         reply_markup=InlineKeyboardMarkup(
                     [
                         [
